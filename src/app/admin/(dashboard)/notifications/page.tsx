@@ -24,3 +24,4 @@ export default async function AdminNotificationsPage() {
 
   return <NotificationsClient initialNotifications={serialized} />;
 }
+

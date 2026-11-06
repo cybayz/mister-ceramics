@@ -67,10 +67,10 @@ export default function Logo({ className = '', variant = 'full', isLink = true }
         
         {variant !== 'compact' && (
           <div className="mt-1 flex items-center">
-            <span className="inline-block px-1.5 py-0.5 rounded-[4px] text-[8.5px] font-black uppercase tracking-[0.16em] bg-[#FACC15] text-black shadow-sm leading-tight">
+            <span className="inline-block px-1.5 py-0.5 rounded-[4px] text-[8.5px] font-black uppercase tracking-[0.16em] bg-[#FACC15] text-black shadow-sm leading-tight whitespace-nowrap">
               Car and Bike Detailing
             </span>
-            <span className="text-[9px] uppercase tracking-[0.18em] text-zinc-400 font-medium ml-1.5 hidden sm:inline">
+            <span className="text-[9px] uppercase tracking-[0.18em] text-zinc-400 font-medium ml-1.5 hidden xl:inline whitespace-nowrap">
               · Kottarakkara
             </span>
           </div>

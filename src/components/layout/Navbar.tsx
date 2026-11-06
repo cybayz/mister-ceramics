@@ -53,14 +53,14 @@ export default function Navbar() {
             <Logo />
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-8">
+            <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
               {NAV_LINKS.map((link) => {
                 const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
                 return (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={`relative text-xs uppercase tracking-[0.2em] font-semibold transition-colors duration-200 py-1 ${
+                    className={`relative text-xs uppercase tracking-[0.18em] font-semibold transition-colors duration-200 py-1 whitespace-nowrap ${
                       isActive ? 'text-brand-gold' : 'text-zinc-300 hover:text-white'
                     }`}
                   >
@@ -74,22 +74,25 @@ export default function Navbar() {
             </nav>
 
             {/* Desktop Action CTAs */}
-            <div className="hidden lg:flex items-center gap-5">
-              {/* Phone quick call */}
+            <div className="hidden lg:flex items-center gap-3 xl:gap-4 shrink-0">
+              {/* Phone quick call with guaranteed single-line alignment */}
               <a
                 href={`tel:${BUSINESS_INFO.phoneRaw}`}
-                className="flex items-center gap-2 text-xs font-semibold text-zinc-300 hover:text-brand-goldLight transition-colors"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-cardElevated/90 border border-brand-border hover:border-brand-gold/40 text-xs font-semibold text-zinc-200 hover:text-brand-gold transition-colors whitespace-nowrap shrink-0 shadow-sm"
+                title={`Call ${BUSINESS_INFO.phone}`}
               >
-                <div className="w-8 h-8 rounded-full bg-brand-cardElevated border border-brand-border flex items-center justify-center text-brand-gold shadow-sm">
-                  <Phone className="w-3.5 h-3.5" />
+                <div className="w-6 h-6 rounded-full bg-brand-gold/15 flex items-center justify-center text-brand-gold shrink-0">
+                  <Phone className="w-3 h-3" />
                 </div>
-                <span>{BUSINESS_INFO.phone}</span>
+                <span className="font-mono tracking-wide whitespace-nowrap text-[11px] xl:text-xs">
+                  {BUSINESS_INFO.phone}
+                </span>
               </a>
 
               {/* Book Appointment CTA */}
               <Link
                 href="/book"
-                className="relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-black bg-gradient-to-r from-brand-goldLight via-brand-gold to-brand-goldMuted hover:from-white hover:to-brand-gold shadow-gold hover:shadow-goldGlow transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+                className="relative inline-flex items-center justify-center gap-2 px-4 xl:px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-black bg-gradient-to-r from-brand-goldLight via-brand-gold to-brand-goldMuted hover:from-white hover:to-brand-gold shadow-gold hover:shadow-goldGlow transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap shrink-0"
               >
                 <Calendar className="w-3.5 h-3.5" />
                 <span>Book Appointment</span>
