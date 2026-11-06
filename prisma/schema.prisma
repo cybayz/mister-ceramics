@@ -1,0 +1,248 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  phone        String?
+  role         String   @default("STAFF") // "ADMIN" | "STAFF"
+  avatarUrl    String?
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  statusHistory BookingStatusHistory[]
+}
+
+model Customer {
+  id        String    @id @default(cuid())
+  name      String
+  phone     String    @unique
+  email     String?
+  notes     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  vehicles  Vehicle[]
+  bookings  Booking[]
+}
+
+model Vehicle {
+  id                 String      @id @default(cuid())
+  customerId         String
+  customer           Customer    @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  type               String      // "CAR" | "BIKE"
+  brand              String
+  model              String
+  registrationNumber String?
+  color              String?
+  photosJson         String?     // JSON array of photo URLs
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+
+  bookings           Booking[]
+
+  @@index([customerId])
+}
+
+model ServiceCategory {
+  id          String      @id @default(cuid())
+  slug        String      @unique
+  name        String
+  vehicleType String      @default("BOTH") // "CAR" | "BIKE" | "BOTH"
+  description String?
+  sortOrder   Int         @default(0)
+  isActive    Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  services    Service[]
+  projects    Project[]
+}
+
+model Service {
+  id                    String          @id @default(cuid())
+  slug                  String          @unique
+  categoryId            String
+  category              ServiceCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  name                  String
+  vehicleType           String          @default("BOTH") // "CAR" | "BIKE" | "BOTH"
+  headline              String?
+  description           String
+  coverImage            String?
+  benefitsJson          String?         // JSON array of strings
+  applicationProcessJson String?        // JSON array of step objects {step, title, description}
+  suitableVehiclesJson  String?         // JSON array of strings
+  defaultDurationHours  Float           @default(4.0)
+  startingPrice         Float?
+  warrantyInfo          String?
+  isFeatured            Boolean         @default(false)
+  isActive              Boolean         @default(true)
+  sortOrder             Int             @default(0)
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+
+  packages              ServicePackage[]
+  bookings              Booking[]
+  projects              Project[]
+
+  @@index([categoryId])
+}
+
+model ServicePackage {
+  id             String   @id @default(cuid())
+  serviceId      String
+  service        Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  name           String
+  price          Float?
+  durationHours  Float?
+  featuresJson   String?  // JSON array of string features
+  warrantyMonths Int?
+  isPopular      Boolean  @default(false)
+  sortOrder      Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  bookings       Booking[]
+
+  @@index([serviceId])
+}
+
+model Booking {
+  id                    String                 @id @default(cuid())
+  reference             String                 @unique // e.g. MC-202611-0421
+  customerId            String
+  customer              Customer               @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  vehicleId             String
+  vehicle               Vehicle                @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  serviceId             String
+  service               Service                @relation(fields: [serviceId], references: [id], onDelete: Restrict)
+  packageId             String?
+  package               ServicePackage?        @relation(fields: [packageId], references: [id], onDelete: SetNull)
+  preferredDate         String                 // YYYY-MM-DD
+  preferredTime         String                 // e.g. "09:00 AM", "02:00 PM"
+  status                String                 @default("Booking Received")
+  totalEstimatedPrice   Float?
+  estimatedDeliveryDate String?                // YYYY-MM-DD
+  customerNotes         String?
+  adminNotes            String?
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+
+  statusHistory         BookingStatusHistory[]
+  progressUpdates       ServiceProgressUpdate[]
+
+  @@index([customerId])
+  @@index([vehicleId])
+  @@index([serviceId])
+  @@index([reference])
+  @@index([preferredDate])
+  @@index([status])
+}
+
+model BookingStatusHistory {
+  id              String   @id @default(cuid())
+  bookingId       String
+  booking         Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  status          String
+  note            String?
+  changedByUserId String?
+  user            User?    @relation(fields: [changedByUserId], references: [id], onDelete: SetNull)
+  createdAt       DateTime @default(now())
+
+  @@index([bookingId])
+}
+
+model ServiceProgressUpdate {
+  id                  String   @id @default(cuid())
+  bookingId           String
+  booking             Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  stage               String   // e.g. "Initial Inspection", "Paint Correction"
+  title               String
+  description         String
+  photosJson          String?  // JSON array of photo URLs
+  isVisibleToCustomer Boolean  @default(true)
+  createdAt           DateTime @default(now())
+
+  @@index([bookingId])
+}
+
+model Project {
+  id             String          @id @default(cuid())
+  slug           String          @unique
+  categoryId     String
+  category       ServiceCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  serviceId      String?
+  service        Service?        @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  title          String
+  vehicleType    String          // "CAR" | "BIKE"
+  vehicleBrand   String
+  vehicleModel   String
+  clientName     String?
+  description    String
+  beforeImageUrl String?
+  afterImageUrl  String?
+  isFeatured     Boolean         @default(false)
+  isPublished    Boolean         @default(true)
+  completedAt    DateTime?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  images         ProjectImage[]
+
+  @@index([categoryId])
+  @@index([serviceId])
+}
+
+model ProjectImage {
+  id        String   @id @default(cuid())
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  imageUrl  String
+  caption   String?
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([projectId])
+}
+
+model Testimonial {
+  id             String   @id @default(cuid())
+  customerName   String
+  vehicleInfo    String
+  serviceName    String
+  rating         Int      @default(5)
+  reviewText     String
+  customerAvatar String?
+  isFeatured     Boolean  @default(true)
+  isPublished    Boolean  @default(true)
+  createdAt      DateTime @default(now())
+}
+
+model BusinessSetting {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       String
+  description String?
+  updatedAt   DateTime @updatedAt
+}
+
+model Notification {
+  id            String    @id @default(cuid())
+  recipientType String    // "CUSTOMER" | "ADMIN"
+  recipientId   String?   // Customer ID or Phone or User ID
+  channel       String    // "WHATSAPP" | "EMAIL" | "INTERNAL"
+  title         String
+  body          String
+  status        String    @default("SENT") // "PENDING" | "SENT" | "FAILED"
+  sentAt        DateTime?
+  createdAt     DateTime  @default(now())
+}
