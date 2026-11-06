@@ -88,3 +88,4 @@ export default async function AdminBookingsPage() {
 
   return <BookingsClient initialBookings={serializedBookings} servicesList={services} />;
 }
+

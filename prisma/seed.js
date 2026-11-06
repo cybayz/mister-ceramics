@@ -472,22 +472,39 @@ async function main() {
   // 5. Completed Projects for Gallery with Real Automotive Photography and Before/After Images
   const projectsData = [
     {
+      slug: 'mercedes-benz-amg-ceramic-coating',
+      categoryId: catMap['car-protection'],
+      title: 'Mercedes-AMG GT Coupe – 9H Ceramic Quartz Multi-Layer Shield',
+      vehicleType: 'CAR',
+      vehicleBrand: 'Mercedes-AMG',
+      vehicleModel: 'GT Coupe (Selenite Grey Metallic)',
+      clientName: 'Vipin Chandran',
+      description: 'The Selenite Grey paint arrived with severe orbital wash swirls and water mineral hazing. We performed a 2-stage precision paint leveling followed by multi-layer 9H quartz ceramic coating, restoring true mirror optical clarity without filler glazes.',
+      beforeImageUrl: '/images/transformations/mercedes-amg-before.jpg',
+      afterImageUrl: '/images/transformations/mercedes-amg-after.jpg',
+      isFeatured: true,
+      isPublished: true,
+      completedAt: new Date('2026-10-18'),
+      images: [
+        { imageUrl: '/images/transformations/mercedes-amg-after.jpg', caption: 'Defect-free Selenite Grey mirror reflection' }
+      ]
+    },
+    {
       slug: 'porsche-911-carrera-borophene-coating',
       categoryId: catMap['car-protection'],
       title: 'Porsche 911 Carrera GTS – Dual Layer Borophene 10H & Paint Correction',
       vehicleType: 'CAR',
       vehicleBrand: 'Porsche',
-      vehicleModel: '911 Carrera GTS (Guards Red)',
+      vehicleModel: '911 Carrera GTS (Jet Black Metallic)',
       clientName: 'Rahul M.',
-      description: 'The owner brought in this Guards Red 911 with moderate swirl marks and clear coat hazing from improper washing techniques. We performed a 2-stage precision paint correction using Rupes Bigfoot polishers, restoring 98% clarity before infusing twin layers of Borophene coating for permanent mirror reflections and hyper-hydrophobic protection.',
-      beforeImageUrl: 'https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=1000&q=80',
-      afterImageUrl: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80',
+      description: 'Jet Black paint is notoriously vulnerable to swirl webs and wash marks. Our technicians measured paint depth across 28 points, conducted two-stage defect leveling, and sealed the surface with twin layers of 10H Borophene nanotech coating.',
+      beforeImageUrl: '/images/transformations/porsche-911-before.jpg',
+      afterImageUrl: '/images/transformations/porsche-911-after.jpg',
       isFeatured: true,
       isPublished: true,
       completedAt: new Date('2026-09-15'),
       images: [
-        { imageUrl: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=85', caption: 'Deep wet gloss reflection under inspection LEDs' },
-        { imageUrl: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=85', caption: 'Interior leather sanitation and UV ceramic shield' },
+        { imageUrl: '/images/transformations/porsche-911-after.jpg', caption: 'Deep wet gloss reflection under inspection LEDs' }
       ]
     },
     {
@@ -496,35 +513,16 @@ async function main() {
       title: 'BMW M3 Competition – Full Body TPU Self-Healing Armor',
       vehicleType: 'CAR',
       vehicleBrand: 'BMW',
-      vehicleModel: 'M3 Competition (Isle of Man Green)',
+      vehicleModel: 'M3 Competition (Destroyer Grey)',
       clientName: 'Dr. Anand K.',
-      description: 'Brand-new delivery straight from the showroom to Mister Ceramic workshop. We installed full-body self-healing Thermoplastic Polyurethane (TPU) film with custom wrapped edges around every panel, carbon fiber roof, and aggressive M front bumper aero channels.',
-      beforeImageUrl: 'https://images.unsplash.com/photo-1555353540-64580b51c258?auto=format&fit=crop&w=1000&q=80',
-      afterImageUrl: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1000&q=80',
+      description: 'Brand-new delivery straight from the showroom to Mister Ceramic cleanroom bay. We removed dealership pre-delivery micro-swirls and installed full-body self-healing Thermoplastic Polyurethane (TPU) film with custom edge-wrapped seams.',
+      beforeImageUrl: '/images/transformations/bmw-m3-before.jpg',
+      afterImageUrl: '/images/transformations/bmw-m3-after.jpg',
       isFeatured: true,
       isPublished: true,
       completedAt: new Date('2026-10-02'),
       images: [
-        { imageUrl: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1200&q=85', caption: 'Edge-wrapped TPU film with invisible transitions' },
-        { imageUrl: 'https://images.unsplash.com/photo-1555353540-64580b51c258?auto=format&fit=crop&w=1200&q=85', caption: 'Flawless Isle of Man Green hue preservation' },
-      ]
-    },
-    {
-      slug: 'mercedes-benz-e-class-ceramic-coating',
-      categoryId: catMap['car-protection'],
-      title: 'Mercedes-Benz E-Class – 9H Ceramic Quartz Multi-Layer Shield',
-      vehicleType: 'CAR',
-      vehicleBrand: 'Mercedes-Benz',
-      vehicleModel: 'E 350d (Obsidian Black)',
-      clientName: 'Vipin Chandran',
-      description: 'Obsidian Black paint requires surgical precision to polish without leaving buffer swirls. We conducted full multi-stage corrective leveling, followed by certified 9H Quartz Ceramic coating, glass water repellent coating, and alloy wheel barrel sealants.',
-      beforeImageUrl: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1000&q=80',
-      afterImageUrl: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80',
-      isFeatured: true,
-      isPublished: true,
-      completedAt: new Date('2026-10-18'),
-      images: [
-        { imageUrl: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=85', caption: 'Obsidian Black deep mirror shine' }
+        { imageUrl: '/images/transformations/bmw-m3-after.jpg', caption: 'Edge-wrapped TPU film with invisible transitions' }
       ]
     },
     {
@@ -535,14 +533,14 @@ async function main() {
       vehicleBrand: 'Ducati',
       vehicleModel: 'Panigale V4 S (Ducati Red)',
       clientName: 'Sanjay Nair',
-      description: 'Treated this Italian track weapon to complete bespoke protection. We wrapped the sculpted fuel tank and carbon front mudguard in self-healing TPU PPF, while treating the exposed engine headers and titanium Akrapovic exhaust with 800°C heat-resistant ceramic coating.',
-      beforeImageUrl: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1000&q=80',
-      afterImageUrl: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=80',
+      description: 'The sculpted fuel tank and fairings had micro-scratches from zipper friction and knee contact. We performed precision micro-polishing, wrapped the fuel tank in self-healing TPU PPF, and sealed the engine block and titanium exhaust with 800°C heat-resistant ceramic.',
+      beforeImageUrl: '/images/transformations/ducati-panigale-before.jpg',
+      afterImageUrl: '/images/transformations/ducati-panigale-after.jpg',
       isFeatured: true,
       isPublished: true,
       completedAt: new Date('2026-10-25'),
       images: [
-        { imageUrl: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=85', caption: 'High heat titanium ceramic coating on exhaust and engine block' }
+        { imageUrl: '/images/transformations/ducati-panigale-after.jpg', caption: 'High heat titanium ceramic coating on exhaust and engine block' }
       ]
     },
     {
@@ -551,16 +549,16 @@ async function main() {
       title: 'Royal Enfield Continental GT 650 – Chrome Restoration & Custom Clear',
       vehicleType: 'BIKE',
       vehicleBrand: 'Royal Enfield',
-      vehicleModel: 'Continental GT 650 (Mister Clean Chrome)',
+      vehicleModel: 'Continental GT 650 (Chrome & Black)',
       clientName: 'Arjun Das',
-      description: 'The chrome tank had developed oxidation stains and micro scratches. We undertook chemical restoration, ultrasonic spoke cleansing, manifold heat stain polish, and sealed the chrome surface with anti-corrosion quartz coat.',
-      beforeImageUrl: 'https://images.unsplash.com/photo-1558980394-4c7c9299fe96?auto=format&fit=crop&w=1000&q=80',
-      afterImageUrl: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=80',
+      description: 'The tank had developed oxidation stains and micro scratches. We undertook chemical restoration, ultrasonic spoke cleansing, manifold heat stain polish, and sealed the chrome surface with anti-corrosion quartz coat.',
+      beforeImageUrl: '/images/transformations/royal-enfield-gt-before.jpg',
+      afterImageUrl: '/images/transformations/royal-enfield-gt-after.jpg',
       isFeatured: false,
       isPublished: true,
       completedAt: new Date('2026-10-30'),
       images: [
-        { imageUrl: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=85', caption: 'Mirror chrome finish sealed against Kerala humidity' }
+        { imageUrl: '/images/transformations/royal-enfield-gt-after.jpg', caption: 'Mirror chrome finish sealed against Kerala humidity' }
       ]
     },
     {
@@ -571,14 +569,14 @@ async function main() {
       vehicleBrand: 'Land Rover',
       vehicleModel: 'Defender 110 P400 (Santorini Black)',
       clientName: 'Kurian Thomas',
-      description: 'Following an off-road expedition in Wayanad, this Defender arrived with heavy trail scratches and clay staining. Complete citrus decontamination, 2-stage rotary leveling, and 5-year Graphene Matrix coating restored it to museum delivery condition.',
-      beforeImageUrl: 'https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=1000&q=80',
-      afterImageUrl: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1000&q=80',
+      description: 'Following an off-road trip, this Defender arrived with trail scratches and clear coat hazing. Complete citrus decontamination, 2-stage rotary leveling, and 5-year Graphene Matrix coating restored it to museum delivery condition.',
+      beforeImageUrl: '/images/transformations/land-rover-defender-before.jpg',
+      afterImageUrl: '/images/transformations/land-rover-defender-after.jpg',
       isFeatured: false,
       isPublished: true,
       completedAt: new Date('2026-11-01'),
       images: [
-        { imageUrl: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1200&q=85', caption: 'Anti-static graphene matrix repels trail dust and road grime' }
+        { imageUrl: '/images/transformations/land-rover-defender-after.jpg', caption: 'Anti-static graphene matrix repels trail dust and road grime' }
       ]
     }
   ];
@@ -669,105 +667,117 @@ async function main() {
     },
   });
 
-  const sampleVehicle = await prisma.vehicle.create({
-    data: {
-      customerId: sampleCustomer.id,
-      type: 'CAR',
-      brand: 'BMW',
-      model: 'M3 Competition',
-      registrationNumber: 'KL-24-S-0007',
-      color: 'Isle of Man Green Metallic',
-    },
+  let sampleVehicle = await prisma.vehicle.findFirst({
+    where: { customerId: sampleCustomer.id },
   });
+
+  if (!sampleVehicle) {
+    sampleVehicle = await prisma.vehicle.create({
+      data: {
+        customerId: sampleCustomer.id,
+        type: 'CAR',
+        brand: 'BMW',
+        model: 'M3 Competition',
+        registrationNumber: 'KL-24-S-0007',
+        color: 'Isle of Man Green Metallic',
+      },
+    });
+  }
 
   const ppfService = await prisma.service.findFirst({
     where: { slug: 'paint-protection-film-ppf' },
   });
 
-  const sampleBooking = await prisma.booking.create({
-    data: {
-      reference: 'MC-202611-0101',
-      customerId: sampleCustomer.id,
-      vehicleId: sampleVehicle.id,
-      serviceId: ppfService.id,
-      preferredDate: '2026-11-08',
-      preferredTime: '10:00 AM',
-      status: 'Service in Progress',
-      totalEstimatedPrice: 95000,
-      estimatedDeliveryDate: '2026-11-10',
-      customerNotes: 'Please ensure full wrap on the carbon front splitter and door edges.',
-      adminNotes: 'Assigned to Lead Detailer Sunil. Vehicle received in pristine condition. Clear coat thickness logged at 135 microns.',
-    },
+  let existingBooking = await prisma.booking.findUnique({
+    where: { reference: 'MC-202611-0101' },
   });
 
-  // Booking status history
-  const statusHistoryEntries = [
-    { status: 'Booking Received', note: 'Booking submitted online by customer.', createdAt: new Date('2026-11-06T09:00:00Z') },
-    { status: 'Booking Confirmed', note: 'Appointment confirmed with customer via telephone. Intake bay 1 reserved.', createdAt: new Date('2026-11-06T10:30:00Z') },
-    { status: 'Vehicle Received', note: 'Vehicle arrived at Kottarakkara studio. Keys and checklist handed over.', createdAt: new Date('2026-11-06T11:00:00Z') },
-    { status: 'Initial Inspection', note: 'Digital paint depth gauge reading completed across 28 points. Minor micro-marring noted on left rear fender.', createdAt: new Date('2026-11-06T11:45:00Z') },
-    { status: 'Service in Progress', note: 'Precision TPU application underway in cleanroom bay. Bonnet and front fenders wrapped.', createdAt: new Date('2026-11-06T14:00:00Z') },
-  ];
-
-  for (const entry of statusHistoryEntries) {
-    await prisma.bookingStatusHistory.create({
+  if (!existingBooking) {
+    const sampleBooking = await prisma.booking.create({
       data: {
-        bookingId: sampleBooking.id,
-        status: entry.status,
-        note: entry.note,
-        changedByUserId: adminUser.id,
-        createdAt: entry.createdAt,
+        reference: 'MC-202611-0101',
+        customerId: sampleCustomer.id,
+        vehicleId: sampleVehicle.id,
+        serviceId: ppfService.id,
+        preferredDate: '2026-11-08',
+        preferredTime: '10:00 AM',
+        status: 'Service in Progress',
+        totalEstimatedPrice: 95000,
+        estimatedDeliveryDate: '2026-11-10',
+        customerNotes: 'Please ensure full wrap on the carbon front splitter and door edges.',
+        adminNotes: 'Assigned to Lead Detailer Sunil. Vehicle received in pristine condition. Clear coat thickness logged at 135 microns.',
       },
     });
-  }
 
-  // Progress updates with photos
-  const progressUpdates = [
-    {
-      stage: 'Initial Inspection & Decontamination',
-      title: 'Snow Foam Wash & Chemical Iron Fallout Dissolution',
-      description: 'Vehicle subjected to multi-stage citrus pre-wash, two-bucket hand wash, and iron decontamination to eliminate road salts and rail dust.',
-      photosJson: JSON.stringify([
-        'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=800&q=80',
-      ]),
-      isVisibleToCustomer: true,
-      createdAt: new Date('2026-11-06T11:30:00Z'),
-    },
-    {
-      stage: 'Paint Correction & Prep',
-      title: 'Precision Dual-Action Panel Polish & Isopropyl Alcohol Wipe',
-      description: 'Light compounding executed to ensure optical clarity under clear coat before laying down the TPU adhesive.',
-      photosJson: JSON.stringify([
-        'https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=800&q=80',
-      ]),
-      isVisibleToCustomer: true,
-      createdAt: new Date('2026-11-06T13:00:00Z'),
-    },
-    {
-      stage: 'Film Application',
-      title: 'Self-Healing TPU Film Installation in Cleanroom Bay',
-      description: 'Custom edge-tucked installation on bonnet and wings using precision slip formula. Zero edge lift guarantee.',
-      photosJson: JSON.stringify([
-        'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80',
-      ]),
-      isVisibleToCustomer: true,
-      createdAt: new Date('2026-11-06T14:30:00Z'),
-    },
-  ];
+    // Booking status history
+    const statusHistoryEntries = [
+      { status: 'Booking Received', note: 'Booking submitted online by customer.', createdAt: new Date('2026-11-06T09:00:00Z') },
+      { status: 'Booking Confirmed', note: 'Appointment confirmed with customer via telephone. Intake bay 1 reserved.', createdAt: new Date('2026-11-06T10:30:00Z') },
+      { status: 'Vehicle Received', note: 'Vehicle arrived at Kottarakkara studio. Keys and checklist handed over.', createdAt: new Date('2026-11-06T11:00:00Z') },
+      { status: 'Initial Inspection', note: 'Digital paint depth gauge reading completed across 28 points. Minor micro-marring noted on left rear fender.', createdAt: new Date('2026-11-06T11:45:00Z') },
+      { status: 'Service in Progress', note: 'Precision TPU application underway in cleanroom bay. Bonnet and front fenders wrapped.', createdAt: new Date('2026-11-06T14:00:00Z') },
+    ];
 
-  for (const pu of progressUpdates) {
-    await prisma.serviceProgressUpdate.create({
-      data: {
-        bookingId: sampleBooking.id,
-        stage: pu.stage,
-        title: pu.title,
-        description: pu.description,
-        photosJson: pu.photosJson,
-        isVisibleToCustomer: pu.isVisibleToCustomer,
-        createdAt: pu.createdAt,
+    for (const entry of statusHistoryEntries) {
+      await prisma.bookingStatusHistory.create({
+        data: {
+          bookingId: sampleBooking.id,
+          status: entry.status,
+          note: entry.note,
+          changedByUserId: adminUser.id,
+          createdAt: entry.createdAt,
+        },
+      });
+    }
+
+    // Progress updates with photos
+    const progressUpdates = [
+      {
+        stage: 'Initial Inspection & Decontamination',
+        title: 'Snow Foam Wash & Chemical Iron Fallout Dissolution',
+        description: 'Vehicle subjected to multi-stage citrus pre-wash, two-bucket hand wash, and iron decontamination to eliminate road salts and rail dust.',
+        photosJson: JSON.stringify([
+          'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=800&q=80',
+          'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=800&q=80',
+        ]),
+        isVisibleToCustomer: true,
+        createdAt: new Date('2026-11-06T11:30:00Z'),
       },
-    });
+      {
+        stage: 'Paint Correction & Prep',
+        title: 'Precision Dual-Action Panel Polish & Isopropyl Alcohol Wipe',
+        description: 'Light compounding executed to ensure optical clarity under clear coat before laying down the TPU adhesive.',
+        photosJson: JSON.stringify([
+          'https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=800&q=80',
+        ]),
+        isVisibleToCustomer: true,
+        createdAt: new Date('2026-11-06T13:00:00Z'),
+      },
+      {
+        stage: 'Film Application',
+        title: 'Self-Healing TPU Film Installation in Cleanroom Bay',
+        description: 'Custom edge-tucked installation on bonnet and wings using precision slip formula. Zero edge lift guarantee.',
+        photosJson: JSON.stringify([
+          'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80',
+        ]),
+        isVisibleToCustomer: true,
+        createdAt: new Date('2026-11-06T14:30:00Z'),
+      },
+    ];
+
+    for (const pu of progressUpdates) {
+      await prisma.serviceProgressUpdate.create({
+        data: {
+          bookingId: sampleBooking.id,
+          stage: pu.stage,
+          title: pu.title,
+          description: pu.description,
+          photosJson: pu.photosJson,
+          isVisibleToCustomer: pu.isVisibleToCustomer,
+          createdAt: pu.createdAt,
+        },
+      });
+    }
   }
 
   console.log('Seeded sample live tracking booking MC-202611-0101');
@@ -782,3 +792,4 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   });
+

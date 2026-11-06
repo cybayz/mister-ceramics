@@ -178,3 +178,4 @@ export default function SettingsClient({ initialSettings }: Props) {
     </div>
   );
 }
+

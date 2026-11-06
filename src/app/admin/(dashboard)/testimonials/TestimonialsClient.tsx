@@ -201,3 +201,4 @@ export default function TestimonialsClient({ initialTestimonials }: Props) {
     </div>
   );
 }
+

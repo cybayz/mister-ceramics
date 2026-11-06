@@ -11,3 +11,4 @@ export default async function AdminSettingsPage() {
 
   return <SettingsClient initialSettings={settings} />;
 }
+

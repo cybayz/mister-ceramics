@@ -128,3 +128,4 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 - **Phone**: +91 92072 09105
 - **Official Google Maps**: [View on Google Maps](https://www.google.com/maps/place/mister+ceramic/data=!4m2!3m1!1s0x3b0675fb65d87319:0x41a9e67271dc0506)
 - **Target Keywords**: *Car detailing in Kottarakkara, PPF installation in Kottarakkara, Ceramic coating in Kollam, Borophene coating in Kollam, Bike detailing in Kollam, Car painting in Kottarakkara*.
+

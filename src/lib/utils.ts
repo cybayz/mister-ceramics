@@ -36,3 +36,4 @@ export function formatDateTime(dateString?: string | Date | null): string {
     hour12: true,
   }).format(date);
 }
+

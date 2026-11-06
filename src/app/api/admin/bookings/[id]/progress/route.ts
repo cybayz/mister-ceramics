@@ -40,3 +40,4 @@ export async function POST(req: NextRequest, { params }: Params) {
     return NextResponse.json({ error: 'Failed to record progress update' }, { status: 500 });
   }
 }
+

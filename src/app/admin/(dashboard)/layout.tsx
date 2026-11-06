@@ -38,6 +38,7 @@ export default async function AdminLayout({
   const NAV_ITEMS = [
     { label: 'Overview', href: '/admin', icon: LayoutDashboard },
     { label: 'Bookings & Intake', href: '/admin/bookings', icon: Calendar },
+    { label: 'Notifications Log', href: '/admin/notifications', icon: Shield },
     { label: 'Services Catalogue', href: '/admin/services', icon: Layers },
     { label: 'Project Gallery', href: '/admin/gallery', icon: ImageIcon },
     { label: 'Testimonials', href: '/admin/testimonials', icon: Eye },

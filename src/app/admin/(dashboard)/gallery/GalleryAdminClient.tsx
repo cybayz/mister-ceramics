@@ -562,3 +562,4 @@ export default function GalleryAdminClient({ initialProjects, categories, servic
     </div>
   );
 }
+

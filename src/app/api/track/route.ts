@@ -121,3 +121,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Failed to retrieve vehicle tracking status.' }, { status: 500 });
   }
 }
+

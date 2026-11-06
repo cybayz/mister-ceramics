@@ -40,3 +40,4 @@ export const STATUS_COLORS: Record<ServiceStatus, { bg: string; text: string; bo
   'Delivered': { bg: 'bg-zinc-500/20', text: 'text-zinc-300', border: 'border-zinc-500/30' },
   'Cancelled': { bg: 'bg-red-500/15', text: 'text-red-400', border: 'border-red-500/30' },
 };
+

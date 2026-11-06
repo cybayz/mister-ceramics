@@ -11,3 +11,4 @@ export default async function AdminTestimonialsPage() {
 
   return <TestimonialsClient initialTestimonials={testimonials} />;
 }
+

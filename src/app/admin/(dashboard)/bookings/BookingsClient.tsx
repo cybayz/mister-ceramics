@@ -722,3 +722,4 @@ export default function BookingsClient({ initialBookings, servicesList }: Props)
     </div>
   );
 }
+

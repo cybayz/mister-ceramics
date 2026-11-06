@@ -49,3 +49,4 @@ export async function requireAuth(allowedRoles: ('ADMIN' | 'STAFF')[] = ['ADMIN'
   }
   return user;
 }
+

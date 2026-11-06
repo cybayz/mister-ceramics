@@ -81,18 +81,19 @@ export default function AboutPage() {
           <div className="lg:col-span-6">
             <div className="relative h-[420px] rounded-2xl overflow-hidden border border-brand-border shadow-2xl bg-zinc-900">
               <Image
-                src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=85"
-                alt="Mister Ceramic Studio Detailing Bay"
+                src="/images/mister-ceramic-studio.jpg"
+                alt="Mister Ceramic Studio Chegamanadu, Kottarakkara"
                 fill
+                sizes="(max-width: 1024px) 100vw, 600px"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-brand-gold">
-                  Controlled Bay Environment
+                  Chegamanadu Facility
                 </span>
                 <p className="text-xs text-white mt-1">
-                  Enclosed, dust-filtered cleanroom for paint correction, film installation, and infrared baking.
+                  Mister Ceramic Car & Bike Detailing Studio in Chegamanadu, Kottarakkara.
                 </p>
               </div>
             </div>
@@ -182,3 +183,4 @@ export default function AboutPage() {
     </div>
   );
 }
+

@@ -1000,3 +1000,4 @@ export default function BookingClient({ categories }: BookingClientProps) {
     </div>
   );
 }
+

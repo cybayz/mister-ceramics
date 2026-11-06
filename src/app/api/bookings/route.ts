@@ -154,6 +154,21 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    // 8. Generate and dispatch customer confirmation notification record
+    const { sendCustomerNotification } = await import('@/lib/notifications');
+    await sendCustomerNotification({
+      trigger: 'BOOKING_RECEIVED',
+      bookingReference: reference,
+      customerName: customer.name,
+      customerPhone: customer.phone,
+      vehicleName: `${vehicle.brand} ${vehicle.model}`,
+      serviceName: service.name,
+      details: {
+        date: preferredDate,
+        time: preferredTime,
+      },
+    });
+
     return NextResponse.json({
       success: true,
       booking: {
@@ -175,3 +190,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Failed to process appointment booking.' }, { status: 500 });
   }
 }
+

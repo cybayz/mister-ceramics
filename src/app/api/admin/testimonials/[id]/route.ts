@@ -16,3 +16,4 @@ export async function DELETE(req: NextRequest, { params }: Params) {
     return NextResponse.json({ error: 'Failed to delete testimonial' }, { status: 500 });
   }
 }
+

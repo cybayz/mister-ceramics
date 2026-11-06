@@ -74,20 +74,19 @@ export default async function HomePage() {
     <div className="relative bg-brand-dark overflow-hidden">
       {/* 1. CINEMATIC HERO SECTION */}
       <section className="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 overflow-hidden">
-        {/* Cinematic Backdrop Image with High Aesthetic Grading */}
+        {/* Cinematic Backdrop Image with High Aesthetic Grading (Pure automotive studio finish - NO ships or boats) */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=2000&q=90"
-            alt="Porsche 911 high-end automotive detailing and ceramic reflection"
+            src="/images/transformations/mercedes-amg-after.jpg"
+            alt="Mister Ceramic Studio luxury automotive ceramic coating and precision finish"
             fill
             sizes="100vw"
             priority
-            className="object-cover object-center transform scale-105 filter brightness-[0.42] contrast-[1.12]"
+            className="object-cover object-center transform scale-105 filter brightness-[0.38] contrast-[1.15]"
           />
           {/* Radial Sheen and Vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-transparent to-brand-dark/80" />
-          <div className="absolute inset-0 bg-radial-vignette opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/40 to-brand-dark/90" />
         </div>
 
         {/* Content Container */}
@@ -152,10 +151,10 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 2. BRAND INTRODUCTION */}
+      {/* 2. BRAND INTRODUCTION & AUTHENTIC STUDIO SHOWCASE */}
       <section className="py-20 bg-brand-darker border-y border-brand-border relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-12">
             <div className="lg:col-span-5 space-y-4">
               <div className="text-xs font-bold uppercase tracking-[0.25em] text-brand-gold">
                 The Mister Ceramic Standard
@@ -171,6 +170,53 @@ export default async function HomePage() {
               <p className="text-zinc-400 text-sm">
                 From luxury sedans and family SUVs to high-performance superbikes, our dust-controlled studio combines computerized paint depth measuring, multi-stage machine compounding, and infrared thermal curing to deliver deep optical clarity, extreme hydrophobic beading, and lasting protection against harsh tropical UV and monsoonal elements.
               </p>
+            </div>
+          </div>
+
+          {/* Authentic Studio Facility Spotlight */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-brand-borderSubtle">
+            <div className="relative h-64 sm:h-80 rounded-2xl overflow-hidden border border-brand-border group shadow-2xl">
+              <Image
+                src="/images/mister-ceramic-studio.jpg"
+                alt="Mister Ceramic Studio storefront in Chegamanadu, Kottarakkara"
+                fill
+                sizes="(max-width: 768px) 100vw, 600px"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-brand-gold">
+                  Official Facility
+                </span>
+                <h4 className="text-sm font-bold text-white mt-0.5">
+                  Mister Ceramic Studio – Chegamanadu, Kottarakkara
+                </h4>
+                <p className="text-[11px] text-zinc-400 mt-1">
+                  Enclosed glass cleanroom bays equipped with specialized geometric inspection LED lighting.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative h-64 sm:h-80 rounded-2xl overflow-hidden border border-brand-border group shadow-2xl">
+              <Image
+                src="/images/studio-interior.jpg"
+                alt="Inside Mister Ceramic cleanroom detailing bay with BMW and Kia Seltos"
+                fill
+                sizes="(max-width: 768px) 100vw, 600px"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-brand-gold">
+                  Active Cleanroom Bays
+                </span>
+                <h4 className="text-sm font-bold text-white mt-0.5">
+                  Dust-Controlled Inspection & Coating Bays
+                </h4>
+                <p className="text-[11px] text-zinc-400 mt-1">
+                  Climate-controlled application for self-healing TPU PPF wraps and multi-layer Borophene infusion.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -365,10 +411,10 @@ export default async function HomePage() {
 
             <div className="max-w-4xl mx-auto">
               <BeforeAfterSlider
-                beforeImage={primaryTransformation.beforeImageUrl || 'https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=1200&q=80'}
-                afterImage={primaryTransformation.afterImageUrl || 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80'}
-                beforeLabel="BEFORE CORRECTION"
-                afterLabel="AFTER CERAMIC SHIELD"
+                beforeImage={primaryTransformation.beforeImageUrl || '/images/transformations/mercedes-amg-before.jpg'}
+                afterImage={primaryTransformation.afterImageUrl || '/images/transformations/mercedes-amg-after.jpg'}
+                beforeLabel="BEFORE CORRECTION (SWIRLS & HAZE)"
+                afterLabel="AFTER CERAMIC MIRROR FINISH"
                 aspectRatio="aspect-[16/10]"
               />
 
@@ -699,3 +745,4 @@ export default async function HomePage() {
     </div>
   );
 }
+

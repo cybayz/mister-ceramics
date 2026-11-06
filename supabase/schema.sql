@@ -210,3 +210,4 @@ CREATE TABLE IF NOT EXISTS notifications (
     sent_at TIMESTAMPTZ,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
