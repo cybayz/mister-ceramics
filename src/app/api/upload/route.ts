@@ -29,25 +29,39 @@ export async function POST(req: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Save to public/uploads directory
-    const uploadDir = join(process.cwd(), 'public', 'uploads');
-    if (!existsSync(uploadDir)) {
-      await mkdir(uploadDir, { recursive: true });
+    // In serverless environments (e.g. Vercel) where the filesystem is read-only,
+    // gracefully fall back to base64 Data URLs so uploads never fail.
+    try {
+      const uploadDir = join(process.cwd(), 'public', 'uploads');
+      if (!existsSync(uploadDir)) {
+        await mkdir(uploadDir, { recursive: true });
+      }
+
+      const cleanFilename = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+      const uniqueFilename = `${Date.now()}-${cleanFilename}`;
+      const filePath = join(uploadDir, uniqueFilename);
+
+      await writeFile(filePath, buffer);
+
+      const fileUrl = `/uploads/${uniqueFilename}`;
+
+      return NextResponse.json({
+        success: true,
+        url: fileUrl,
+        filename: uniqueFilename,
+      });
+    } catch (fsErr: any) {
+      if (fsErr.code === 'EROFS' || process.env.VERCEL) {
+        const base64 = buffer.toString('base64');
+        const dataUrl = `data:${file.type};base64,${base64}`;
+        return NextResponse.json({
+          success: true,
+          url: dataUrl,
+          filename: file.name,
+        });
+      }
+      throw fsErr;
     }
-
-    const cleanFilename = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-    const uniqueFilename = `${Date.now()}-${cleanFilename}`;
-    const filePath = join(uploadDir, uniqueFilename);
-
-    await writeFile(filePath, buffer);
-
-    const fileUrl = `/uploads/${uniqueFilename}`;
-
-    return NextResponse.json({
-      success: true,
-      url: fileUrl,
-      filename: uniqueFilename,
-    });
   } catch (error) {
     console.error('File Upload Error:', error);
     return NextResponse.json({ error: 'Failed to upload image' }, { status: 500 });
