@@ -33,3 +33,4 @@ try {
   console.error('[prepare-prisma] Error running prisma generate:', err.message);
   process.exit(1);
 }
+
