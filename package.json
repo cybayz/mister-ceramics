@@ -4,12 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/prepare-prisma.js && next build",
+    "vercel-build": "node scripts/prepare-prisma.js && next build",
+    "postinstall": "node scripts/prepare-prisma.js",
     "start": "next start",
     "lint": "next lint",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
-    "db:seed": "node prisma/seed.js"
+    "db:seed": "node prisma/seed.js",
+    "db:pg": "PRISMA_PROVIDER=postgresql node scripts/prepare-prisma.js",
+    "db:sqlite": "PRISMA_PROVIDER=sqlite node scripts/prepare-prisma.js"
   },
   "dependencies": {
     "@prisma/client": "^5.21.1",
