@@ -52,6 +52,11 @@ export default function BeforeAfterSlider({
     setIsDragging(false);
   }, []);
 
+  const handleStart = (clientX: number) => {
+    setIsDragging(true);
+    handleMove(clientX);
+  };
+
   useEffect(() => {
     if (isDragging) {
       window.addEventListener('mousemove', handleMouseMove);
@@ -71,8 +76,12 @@ export default function BeforeAfterSlider({
     <div
       ref={containerRef}
       className={`relative select-none overflow-hidden rounded-xl border border-brand-border bg-brand-card shadow-darkCard cursor-ew-resize group ${aspectRatio} ${className}`}
-      onMouseDown={() => setIsDragging(true)}
-      onTouchStart={() => setIsDragging(true)}
+      onMouseDown={(e) => handleStart(e.clientX)}
+      onTouchStart={(e) => {
+        if (e.touches && e.touches[0]) {
+          handleStart(e.touches[0].clientX);
+        }
+      }}
       role="slider"
       aria-label="Before and after transformation comparison slider"
       aria-valuenow={sliderPosition}
@@ -93,22 +102,23 @@ export default function BeforeAfterSlider({
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
       </div>
 
-      {/* Before Image (Clipped) */}
+      {/* Before Image (Clipped seamlessly using pure CSS clipPath) */}
       <div
-        className="absolute inset-0 overflow-hidden"
-        style={{ width: `${sliderPosition}%` }}
+        className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
+        style={{
+          clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+          WebkitClipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+        }}
       >
-        <div className="relative w-full h-full" style={{ width: containerRef.current ? `${containerRef.current.clientWidth}px` : '100%' }}>
-          <Image
-            src={beforeImage}
-            alt={beforeLabel}
-            fill
-            sizes="(max-width: 1200px) 100vw, 1200px"
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
-        </div>
+        <Image
+          src={beforeImage}
+          alt={beforeLabel}
+          fill
+          sizes="(max-width: 1200px) 100vw, 1200px"
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
       </div>
 
       {/* Badges */}
