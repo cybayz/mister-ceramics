@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=85',
+        url: '/images/mister-ceramic-studio.jpg',
         width: 1200,
         height: 630,
         alt: 'Mister Ceramic Premium Automotive Detailing Studio',
@@ -59,7 +59,7 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'AutoRepair',
     name: 'Mister Ceramic',
-    image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=85',
+    image: 'https://misterceramic.com/images/mister-ceramic-studio.jpg',
     telephone: BUSINESS_INFO.phone,
     address: {
       '@type': 'PostalAddress',
