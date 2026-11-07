@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 import { BUSINESS_INFO } from '@/lib/constants';
+import DigitalIntakePass from '@/components/ui/DigitalIntakePass';
 
 interface ServiceWithPackages {
   id: string;
@@ -284,6 +285,28 @@ export default function BookingClient({ categories }: BookingClientProps) {
           >
             <span>Go to Live Vehicle Tracking</span>
           </Link>
+        </div>
+
+        {/* Digital Studio Intake Pass */}
+        <div className="mt-10 pt-8 border-t border-brand-border text-left">
+          <div className="text-center mb-6">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-gold">
+              Digital Intake Document
+            </span>
+            <p className="text-xs text-zinc-400 mt-1">
+              Save or present this pass upon vehicle arrival at our Chegamanadu studio bay.
+            </p>
+          </div>
+          <DigitalIntakePass
+            reference={bookingConfirmation.reference}
+            customerName={customerName}
+            customerPhone={customerPhone}
+            vehicle={bookingConfirmation.vehicle}
+            serviceName={bookingConfirmation.serviceName}
+            preferredDate={bookingConfirmation.preferredDate}
+            preferredTime={bookingConfirmation.preferredTime}
+            status="Booking Received"
+          />
         </div>
       </div>
     );

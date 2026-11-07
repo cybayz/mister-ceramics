@@ -6,7 +6,17 @@ const schemaPath = path.join(__dirname, '..', 'prisma', 'schema.prisma');
 let schema = fs.readFileSync(schemaPath, 'utf8');
 
 // Determine desired provider from DATABASE_URL
-const dbUrl = process.env.DATABASE_URL || '';
+let dbUrl = process.env.DATABASE_URL || '';
+if (!dbUrl) {
+  const envPath = path.join(__dirname, '..', '.env');
+  if (fs.existsSync(envPath)) {
+    const envContent = fs.readFileSync(envPath, 'utf8');
+    const match = envContent.match(/^DATABASE_URL=["']?([^"'\r\n]+)["']?/m);
+    if (match) {
+      dbUrl = match[1];
+    }
+  }
+}
 const isPostgres = dbUrl.startsWith('postgres://') || dbUrl.startsWith('postgresql://');
 const targetProvider = isPostgres ? 'postgresql' : (process.env.PRISMA_PROVIDER || 'sqlite');
 

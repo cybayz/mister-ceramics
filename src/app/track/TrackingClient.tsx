@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { SERVICE_STATUSES, STATUS_COLORS, ServiceStatus } from '@/lib/constants';
 import { formatDate, formatDateTime } from '@/lib/utils';
+import DigitalIntakePass from '@/components/ui/DigitalIntakePass';
 
 interface TrackedBooking {
   reference: string;
@@ -72,6 +73,7 @@ export default function TrackingClient() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [booking, setBooking] = useState<TrackedBooking | null>(null);
+  const [showPass, setShowPass] = useState(false);
 
   const fetchTracking = async (refVal: string, phoneVal: string) => {
     if (!refVal || !phoneVal) return;
@@ -239,6 +241,36 @@ export default function TrackingClient() {
                 </span>
               </div>
             </div>
+
+            {/* Studio Pass Toggle Button */}
+            <div className="mt-6 pt-4 border-t border-brand-borderSubtle flex items-center justify-between">
+              <span className="text-[11px] text-zinc-400">
+                Official Mister Ceramic intake verification pass with tracking QR code.
+              </span>
+              <button
+                type="button"
+                onClick={() => setShowPass(!showPass)}
+                className="px-4 py-2 rounded-lg text-xs font-semibold bg-brand-gold/15 text-brand-gold hover:bg-brand-gold hover:text-black border border-brand-gold/40 transition-all duration-200"
+              >
+                {showPass ? 'Hide Studio Pass' : 'View Digital Studio Pass'}
+              </button>
+            </div>
+
+            {/* Embedded Digital Intake Pass Modal/Dropdown */}
+            {showPass && (
+              <div className="mt-8 pt-6 border-t border-brand-border">
+                <DigitalIntakePass
+                  reference={booking.reference}
+                  customerName={booking.customerName}
+                  customerPhone={booking.customerPhone}
+                  vehicle={`${booking.vehicle.brand} ${booking.vehicle.model}`}
+                  serviceName={booking.service.name}
+                  preferredDate={booking.preferredDate}
+                  preferredTime={booking.preferredTime}
+                  status={booking.status}
+                />
+              </div>
+            )}
           </div>
 
           {/* 10-STAGE PROGRESS TIMELINE */}

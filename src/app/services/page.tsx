@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Clock, Shield, Check, ArrowRight, Sparkles, Flame, ShieldCheck } from 'lucide-react';
 import prisma from '@/lib/prisma';
 import { formatCurrency } from '@/lib/utils';
+import StudioCostCalculator from '@/components/ui/StudioCostCalculator';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -179,6 +180,11 @@ export default async function ServicesPage() {
             </div>
           </section>
         ))}
+      </div>
+
+      {/* Interactive Studio Cost Estimator */}
+      <div className="mt-16 border-t border-brand-border">
+        <StudioCostCalculator />
       </div>
     </div>
   );

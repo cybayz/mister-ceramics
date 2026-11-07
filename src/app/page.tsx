@@ -20,6 +20,8 @@ import {
 } from 'lucide-react';
 import prisma from '@/lib/prisma';
 import BeforeAfterSlider from '@/components/ui/BeforeAfterSlider';
+import StudioCostCalculator from '@/components/ui/StudioCostCalculator';
+import KeralaFAQ from '@/components/ui/KeralaFAQ';
 import { BUSINESS_INFO } from '@/lib/constants';
 import { formatCurrency } from '@/lib/utils';
 
@@ -622,6 +624,12 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* 8.5 INTERACTIVE STUDIO COST & DURATION ESTIMATOR */}
+      <StudioCostCalculator />
+
+      {/* 8.6 KERALA CLIMATE DETAILING FAQ */}
+      <KeralaFAQ />
 
       {/* 9. APPOINTMENT BOOKING CTA */}
       <section className="py-20 bg-gradient-to-b from-brand-dark to-brand-card relative overflow-hidden border-y border-brand-border">
